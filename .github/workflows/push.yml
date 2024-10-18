@@ -9,7 +9,7 @@ jobs:
   update_demo:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout click-app
+    - name: Checkout click-app-copier
       uses: actions/checkout@v4
       with:
         path: main
@@ -22,14 +22,14 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: "3.11"
+        python-version: "3.12"
         cache: pip
     - name: Install dependencies
       run: |
         pip install -r main/requirements.txt
     - name: Build demo from template
       run: |-
-        cat main/input-for-demo.txt | cookiecutter main
+        cat main/input-for-demo.txt | copier copy main click-app-copier-template-demo
         find click-app-copier-template-demo
     - name: Push to git
       env:
