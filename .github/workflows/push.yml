@@ -18,7 +18,7 @@ jobs:
       with:
         repository: kj-9/click-app-copier-template-demo
         path: click-app-copier-template-demo-current
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_FOR_PUSH }}
+        token: ${{ secrets.PAT_WRITE_CLICK_APP_COPIER_TEMPLATE_DEMO }}
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
