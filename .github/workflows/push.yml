@@ -33,7 +33,7 @@ jobs:
         find click-app-copier-template-demo
     - name: Push to git
       env:
-        PERSONAL_ACCESS_TOKEN_FOR_PUSH: ${{ secrets.PAT_WRITE_CLICK-APP-COPIER-TEMPLATE-DEMO }}
+        PERSONAL_ACCESS_TOKEN_FOR_PUSH: ${{ secrets.PAT_WRITE_CLICK_APP_COPIER_TEMPLATE_DEMO }}
       run: |-
         # Move the .git folder across
         mv click-app-copier-template-demo-current/.git click-app-copier-template-demo
