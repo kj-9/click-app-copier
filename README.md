@@ -16,6 +16,8 @@ pipx install copier
 
 then run:
 ```bash
+mkdir your-new-project
+cd your-new-project
 copier copy gh:kj-9/click-app-copier .
 ```
 
