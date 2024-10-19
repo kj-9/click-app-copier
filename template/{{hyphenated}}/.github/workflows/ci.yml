@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 permissions:
   contents: read
-{% raw %}
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -39,5 +38,3 @@ jobs:
           make install
       - name: Run check
         run: make check
-
-{% endraw %}
