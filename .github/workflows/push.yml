@@ -20,9 +20,9 @@ jobs:
         path: click-app-copier-template-demo-current
         token: ${{ secrets.PAT_WRITE_CLICK_APP_COPIER_TEMPLATE_DEMO }}
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: "3.12"
+        python-version: "3.13"
         cache: pip
     - name: Install dependencies
       run: |
