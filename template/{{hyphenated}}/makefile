@@ -11,7 +11,7 @@ pre-commit-update:
 	pre-commit autoupdate
 
 .PHONY: readme
-readme: 
+readme:
 	cog -r README.md
 
 .PHONY:

@@ -6,7 +6,7 @@ app_name:
 description:
   type: str
   prompt: "What is the description of your app?"
-hyphenated: 
+hyphenated:
   type: str
   default: "{{ '-'.join(app_name.lower().split()).replace('_', '-') }}"
   prompt: "just press enter to use the default value"
@@ -20,4 +20,3 @@ github_username:
 author_name:
   type: str
   prompt: "What is your name?"
-
