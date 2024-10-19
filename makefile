@@ -7,4 +7,4 @@ demo:
 
 .PHONY: demo-update
 demo-update:
-	cd $(DEMO_DIR) && copier update --vcs-ref HEAD
+	copier update --vcs-ref HEAD $(DEMO_DIR)
