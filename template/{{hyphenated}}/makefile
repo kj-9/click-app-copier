@@ -12,11 +12,11 @@ pre-commit-update:
 
 .PHONY: readme
 readme:
-	python -m cog -r README.md
+	python -m cogapp -r README.md
 
 .PHONY:
 check:
-	python -m pre_commit run --all-files --show-diff-on-failure && cog --check README.md
+	python -m pre_commit run --all-files --show-diff-on-failure && python -m cogapp --check README.md
 
 .PHONY: test
 test:
