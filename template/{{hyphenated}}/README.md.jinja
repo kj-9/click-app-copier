@@ -56,9 +56,23 @@ source venv/bin/activate
 ```
 Now install the dependencies and test dependencies:
 ```bash
-pip install -e '.[test]'
+make install-e
 ```
 To run the tests:
 ```bash
-python -m pytest
+make test
 ```
+
+To run pre-commit to lint and format:
+```bash
+make check
+```
+
+`make check` detects if cli help message in `README.md` is outdated and updates it.
+
+To update cli help message `README.md`:
+```bash
+make readme
+```
+
+this runs [cog](https://cog.readthedocs.io/en/latest/) on README.md and updates the help message inside it.
