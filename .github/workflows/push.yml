@@ -12,6 +12,9 @@ permissions:
 jobs:
   update_demo:
     runs-on: ubuntu-latest
+    # set variables
+    env:
+      BRANCH_TO_UPDATE: latest-copy
     steps:
     - name: Checkout click-app-copier
       uses: actions/checkout@v4
@@ -22,6 +25,7 @@ jobs:
       with:
         repository: kj-9/click-app-copier-template-demo
         path: click-app-copier-template-demo-current
+        ref: ${{ env.BRANCH_TO_UPDATE }}
         token: ${{ secrets.PAT_WRITE_CLICK_APP_COPIER_TEMPLATE_DEMO }}
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -47,7 +51,7 @@ jobs:
         git config user.email "actions@users.noreply.github.com"
         git add -A .
         git commit -m "Demo of click-app ${GITHUB_SHA}" || exit 0
-        git push -u origin main
+        git push -u origin ${{ env.BRANCH_TO_UPDATE }}
     - name: Post commit comment
       run: |-
         cd click-app-copier-template-demo
