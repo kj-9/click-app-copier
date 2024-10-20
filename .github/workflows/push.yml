@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+
+permissions:
+  contents: read # for create commit comment
+
 jobs:
   update_demo:
     runs-on: ubuntu-latest
