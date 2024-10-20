@@ -7,7 +7,7 @@ on:
 
 
 permissions:
-  contents: read # for create commit comment
+  contents: write # for create commit comment
 
 jobs:
   update_demo:
