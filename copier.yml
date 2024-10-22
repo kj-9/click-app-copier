@@ -2,25 +2,25 @@ _subdirectory: template
 
 app_name:
   type: str
-  prompt: "What is the name of your app?"
+  help: What is the name of your app?
 description:
   type: str
-  prompt: "What is the description of your app?"
+  help: What is the description of your app?
 hyphenated:
   type: str
   default: "{{ '-'.join(app_name.lower().split()).replace('_', '-') }}"
-  prompt: "just press enter to use the default value"
+  help: Press enter to use the default value
 underscored:
   type: str
   default: "{{ hyphenated.replace('-', '_') }}"
-  prompt: "just press enter to use the default value"
+  help: Press enter to use the default value
 github_username:
   type: str
-  prompt: "What is your GitHub username?"
+  help: What is your GitHub username?
 author_name:
   type: str
-  prompt: "What is your name?"
+  help: What is your name?
 update:
   type: bool
-  help: "Do you want to enable periodic updates?"
+  help: Do you want to enable periodic update from the copier template?
   default: false
