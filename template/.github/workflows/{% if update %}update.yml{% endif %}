@@ -28,7 +28,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
-        commit-message: Update generated project
+        commit-message: run `copier update`
         branch: copier/update
-        title: Update generated project
-        body: This PR updates the generated project with the latest changes from the template.
+        title: Update by `copier update`
+        body: This PR updates the generated project with the latest changes from the copier template.
