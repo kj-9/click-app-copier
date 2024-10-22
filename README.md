@@ -14,18 +14,15 @@ First install copier if you haven't already.
 pipx install copier
 ```
 
-then run:
+then:
 ```bash
-mkdir your-new-project
-cd your-new-project
-copier copy gh:kj-9/click-app-copier .
+copier copy gh:kj-9/click-app-copier your-new-project
 ```
+this will generate a project dir in the `./your-new-project`.
 
-this will generate a generated project dir in the current directory.
 
 ## Demo
-
-demo project generated using this template can be found [here](https://github.com/kj-9/click-app-copier-template-demo).
+[Here](https://github.com/kj-9/click-app-copier-template-demo) is a demo repository of a generated project using this template.
 
 
 ## Publishing your tool as a package to PyPI
