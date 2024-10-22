@@ -1,0 +1,34 @@
+name: Periodic Copier Update
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Runs every week
+  workflow_dispatch:
+
+permissions:
+  contents: write # for creating PR
+
+jobs:
+  update_copier:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
+        cache: pip
+    - name: Install dependencies
+      run: |
+        pip install copier
+    - name: Run copier update
+      run: |
+        copier update --skip-answered --defaults
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
+      with:
+        commit-message: run `copier update`
+        branch: copier/update
+        title: Update by `copier update`
+        body: This PR updates the generated project with the latest changes from the copier template.

@@ -20,3 +20,7 @@ github_username:
 author_name:
   type: str
   prompt: "What is your name?"
+update:
+  type: bool
+  help: "Do you want to enable periodic updates?"
+  default: false
