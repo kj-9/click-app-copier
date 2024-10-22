@@ -1,4 +1,4 @@
-name: Periodic Copier Update
+name: Copier Update
 
 on:
   schedule:
@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write # for creating PR
+  pull-requests: write
 
 jobs:
   update_copier:
@@ -26,9 +27,12 @@ jobs:
       run: |
         copier update --skip-answered --defaults
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4
+      uses: peter-evans/create-pull-request@v7
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: run `copier update`
+        committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+        author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
         branch: copier/update
         title: Update by `copier update`
         body: This PR updates the generated project with the latest changes from the copier template.
