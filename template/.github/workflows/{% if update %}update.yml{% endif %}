@@ -33,9 +33,12 @@ jobs:
       uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: run `copier update`
+        commit-message: run `copier update and pre-commit update`
         committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
         author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
-        branch: copier/update
-        title: Update by `copier update`
-        body: This PR updates the generated project with the latest changes from the copier template.
+        branch: gh-action/update
+        title: Update by `copier update and pre-commit update`
+        body: |
+          This PR was created by a GitHub Action triggered by a schedule.
+          It runs `copier update` and `pre-commit autoupdate` to keep the project up-to-date.
+          Please review the changes and merge this PR if it looks good.
