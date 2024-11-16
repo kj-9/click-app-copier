@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  update_copier:
+  update:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -22,10 +22,13 @@ jobs:
         cache: pip
     - name: Install dependencies
       run: |
-        pip install copier
+        pip install copier pre-commit
     - name: Run copier update
       run: |
         copier update --skip-answered --defaults
+    - name: Run pre-commit update
+      run: |
+        pre-commit autoupdate
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
