@@ -9,11 +9,11 @@ description:
 hyphenated:
   type: str
   default: "{{ '-'.join(app_name.lower().split()).replace('_', '-') }}"
-  help: Press enter to use the default value
+  when: false # not ask
 underscored:
   type: str
   default: "{{ hyphenated.replace('-', '_') }}"
-  help: Press enter to use the default value
+  when: false # not ask
 github_username:
   type: str
   help: What is your GitHub username?
