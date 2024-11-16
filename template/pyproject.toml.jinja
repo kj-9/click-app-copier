@@ -12,6 +12,10 @@ classifiers = [
 dependencies = [
     "click"
 ]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 {% if github_username %}
 [project.urls]
 Homepage = "https://github.com/{{ github_username }}/{{ hyphenated }}"
