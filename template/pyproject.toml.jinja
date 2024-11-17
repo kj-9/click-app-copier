@@ -33,19 +33,17 @@ test = ["pytest", "pre-commit", "cogapp"]
 [tool.ruff.lint]
 select = [
     "E", "F", "I",
-    #"D", for now
+    # "D", turn off requiring docstrings
     "W", "PL", "B", "UP"
 ]
 
-# Never enforce `E501` (line length violations).
 ignore = [
-    "E501",
-    "PLR2004"# for now
+    "E501", # ignore line length violations
+    "PLR2004" # ignore magic values, see also: https://docs.astral.sh/ruff/rules/magic-value-comparison/
 ]
 
-# Ignore `E402` (import violations) in all `__init__.py` files, and in `path/to/file.py`.
 [tool.ruff.lint.per-file-ignores]
-"*__init__.py" = ["F401"]
+"*__init__.py" = ["F401"] # ignore `E401` (unused import) in all `__init__.py` files
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
