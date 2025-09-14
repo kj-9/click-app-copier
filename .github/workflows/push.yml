@@ -34,9 +34,9 @@ jobs:
         enable-cache: true
     - name: Build demo from template
       run: |-
-        make demo
-        make demo-check
+        cat main/input-for-demo.txt | copier copy main click-app-copier-template-demo
         find click-app-copier-template-demo
+        cd click-app-copier-template-demo && make sync demo-check
     - name: Push to git
       env:
         PERSONAL_ACCESS_TOKEN_FOR_PUSH: ${{ secrets.PAT_WRITE_CLICK_APP_COPIER_TEMPLATE_DEMO }}
