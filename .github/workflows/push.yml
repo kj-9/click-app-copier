@@ -34,6 +34,7 @@ jobs:
         enable-cache: true
     - name: Build demo from template
       run: |-
+        uv tool install copier
         cat main/input-for-demo.txt | copier copy main click-app-copier-template-demo
         find click-app-copier-template-demo
         cd click-app-copier-template-demo && make sync demo-check
