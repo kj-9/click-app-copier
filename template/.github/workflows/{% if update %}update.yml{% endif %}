@@ -14,31 +14,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: astral-sh/setup-uv@v6
       with:
         python-version: "3.13"
-        cache: pip
+        enable-cache: true
     - name: Install dependencies
       run: |
-        pip install copier pre-commit
+        uv tool install copier
     - name: Run copier update
       run: |
         copier update --skip-answered --defaults
-    - name: Run pre-commit update
-      run: |
-        pre-commit autoupdate
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v7
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: run `copier update and pre-commit update`
+        commit-message: run `copier update`
         committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
         author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
         branch: gh-action/update
-        title: Update by `copier update` and `pre-commit update`
+        title: Update by `copier update`
         body: |
           This PR was created by a GitHub Action triggered by a schedule.
-          It runs `copier update` and `pre-commit autoupdate` to keep the project up-to-date.
+          It runs `copier update` to keep the project up-to-date.
           Please review the changes and merge this PR if it looks good.
