@@ -38,7 +38,7 @@ jobs:
         uv pip install -r main/requirements.txt
     - name: Build demo from template
       run: |-
-        cat main/input-for-demo.txt | copier copy main click-app-copier-template-demo
+        cat main/input-for-demo.txt | uv run copier copy main click-app-copier-template-demo
         find click-app-copier-template-demo
         cd click-app-copier-template-demo && make sync ci-check
     - name: Push to git
