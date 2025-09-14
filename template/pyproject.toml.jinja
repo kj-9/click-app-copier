@@ -1,14 +1,12 @@
 [project]
 name = "{{ hyphenated }}"
-version = "0.1"
+version = "0.1.0a0"
 description = "{{ description or "" }}"
 readme = "README.md"
 authors = [{name = "{{ author_name }}"}]
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 requires-python = ">=3.9"
-classifiers = [
-    "License :: OSI Approved :: Apache Software License"
-]
+classifiers = []
 dependencies = [
     "click"
 ]
@@ -26,8 +24,14 @@ CI = "https://github.com/{{ github_username }}/{{ hyphenated }}/actions"
 [project.scripts]
 {{ hyphenated }} = "{{ underscored }}.cli:cli"
 
-[project.optional-dependencies]
-test = ["pytest", "pre-commit", "cogapp"]
+[dependency-groups]
+dev = [
+    "cogapp",
+    "pytest",
+    "ty",
+    "ruff",
+]
+
 
 # see also: https://beta.ruff.rs/docs/configuration/#using-pyprojecttoml
 [tool.ruff.lint]

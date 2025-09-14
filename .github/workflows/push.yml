@@ -17,27 +17,25 @@ jobs:
       BRANCH_TO_UPDATE: latest-copy
     steps:
     - name: Checkout click-app-copier
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         path: main
     - name: Checkout click-app-copier-template-demo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         repository: kj-9/click-app-copier-template-demo
         path: click-app-copier-template-demo-current
         ref: ${{ env.BRANCH_TO_UPDATE }}
         token: ${{ secrets.PAT_WRITE_CLICK_APP_COPIER_TEMPLATE_DEMO }}
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: astral-sh/setup-uv@v6
       with:
         python-version: "3.13"
-        cache: pip
-    - name: Install dependencies
-      run: |
-        pip install -r main/requirements.txt
+        enable-cache: true
     - name: Build demo from template
       run: |-
-        cat main/input-for-demo.txt | copier copy main click-app-copier-template-demo
+        make demo
+        make demo-check
         find click-app-copier-template-demo
     - name: Push to git
       env:

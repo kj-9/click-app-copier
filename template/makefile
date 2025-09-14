@@ -1,23 +1,32 @@
-.PHONY: install
-install:
-	python -m pip install '.[test]'
+.PHONY: format lint typecheck test check ci-check build
 
-.PHONY: install-e
-install-e:
-	python -m pip install -e '.[test]'
+UV_RUN=uv run --frozen
 
-.PHONY: pre-commit-update
-pre-commit-update:
-	python -m pre_commit autoupdate
+sync:
+	uv sync
 
-.PHONY: readme
 readme:
-	python -m cogapp -r README.md
+	$(UV_RUN) cog -r README.md
 
-.PHONY:
-check:
-	python -m pre_commit run --all-files --show-diff-on-failure && python -m cogapp --check README.md
+format:
+	$(UV_RUN) ruff format .
 
-.PHONY: test
+lint:
+	$(UV_RUN) ruff check . --fix
+
+typecheck:
+	$(UV_RUN) ty check
+
 test:
-	python -m pytest
+	$(UV_RUN) pytest
+
+ci-check:
+	$(UV_RUN) ruff format . --check
+	$(UV_RUN) ruff check .
+	$(UV_RUN) ty check
+	$(UV_RUN) cog --check README.md
+
+check: readme format lint typecheck test
+
+build:
+	uv build --frozen

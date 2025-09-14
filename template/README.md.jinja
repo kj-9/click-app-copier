@@ -48,31 +48,19 @@ python -m {{ underscored }} --help
 ```
 ## Development
 
-To contribute to this tool, first checkout the code. Then create a new virtual environment:
+To contribute to this tool, first checkout the code. Then create a new virtual environment using uv:
 ```bash
-cd {{ hyphenated }}
-python -m venv venv
-source venv/bin/activate
+make sync
 ```
-Now install the dependencies and test dependencies:
-```bash
-make install-e
-```
+
 To run the tests:
 ```bash
 make test
 ```
 
-To run pre-commit to lint and format:
+To run all formatting and linting, type check:
 ```bash
 make check
 ```
 
-`make check` detects if cli help message in `README.md` is outdated and updates it.
-
-To update cli help message `README.md`:
-```bash
-make readme
-```
-
-this runs [cog](https://cog.readthedocs.io/en/latest/) on README.md and updates the help message inside it.
+this also runs [cog](https://cog.readthedocs.io/en/latest/) on README.md and updates the help message inside it.
